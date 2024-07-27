@@ -1,0 +1,3 @@
+https://www.rdatagen.net/post/inverse-probability-weighting-when-the-outcome-is-binary/
+
+http://faculty.washington.edu/peterg/programs/Estimate_mean_and_meandifference_AIPW_and_median_and_mediandifference_efficientEE.R

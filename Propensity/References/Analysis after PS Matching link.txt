@@ -1,0 +1,5 @@
+Whether to conduct paired analysis after PS matching
+
+https://www.stata.com/statalist/archive/2012-08/msg00985.html
+
+https://documentation.sas.com/?docsetId=statug&docsetTarget=statug_psmatch_examples05.htm&docsetVersion=14.3&locale=en
