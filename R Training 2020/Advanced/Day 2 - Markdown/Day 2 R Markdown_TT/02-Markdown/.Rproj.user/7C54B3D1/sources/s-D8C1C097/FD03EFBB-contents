@@ -1,0 +1,25 @@
+```{r setup}
+library(ggplot2)
+```
+
+```{r}
+mpg
+```
+
+```{r}
+knitr::kable(head(mpg), caption="Table with kable") 
+```
+
+```{r results="asis"}
+print(xtable::xtable(head(mpg), caption="Table with xtable"), type="html")
+
+```
+
+```{r results="asis"}
+print(xtable::xtable(head(mpg), caption = "Table with xtable"),
+type = "html", html.table.attributes = "border=0")
+```
+
+```{r results="asis"}
+stargazer::stargazer(head(mpg), type="html", title="Table with stargazer")
+```

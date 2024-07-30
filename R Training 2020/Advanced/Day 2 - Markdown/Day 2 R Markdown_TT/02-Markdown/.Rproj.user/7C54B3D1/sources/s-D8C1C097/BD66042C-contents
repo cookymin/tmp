@@ -1,0 +1,15 @@
+```{r setup}
+library(ggplot2)
+```
+
+```{r}
+knitr::kable(head(mpg)) 
+```
+
+```{r results="as-is"}
+print(xtable::xtable(head(mpg)))
+```
+
+```{r}
+stargazer::stargazer(head(data))
+```

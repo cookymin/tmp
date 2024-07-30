@@ -1,0 +1,2 @@
+MACOSX files are for MAC Users
+PC users please access Day 2 R Markdown TT (Train the Trainer)

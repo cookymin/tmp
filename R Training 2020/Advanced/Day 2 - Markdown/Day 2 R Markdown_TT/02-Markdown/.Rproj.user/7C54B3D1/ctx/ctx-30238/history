@@ -1,0 +1,172 @@
+knit_with_parameters('~/Lamstein Consulting/gilead/Markdown Workshop/04-yaml.Rmd')
+library(choroplethr)
+library(choroplethrMaps)
+?country_choropleth
+choroplethr_wdi(code="SP.POP.TOTL", year=2012, title="2012 Population Estimates", num_colors=1)
+choroplethr_wdi
+data(country.regions, package = "choroplethrMaps", envir = environment())
+if (is.null(title)) {
+title = paste0("WDI Indicator ", code, " for year ",
+year)
+}
+data = WDI(country = country.regions$iso2c, code, start = year,
+end = year)
+data = merge(data, country.regions)
+data$value = data[, names(data) == code]
+country_choropleth(data, title, "", num_colors, zoom)
+data(country.regions, package = "choroplethrMaps", envir = environment())
+library(WDI)
+data = WDI(country = country.regions$iso2c, code, start = year,
+end = year)
+data(country.regions, package = "choroplethrMaps", envir = environment())
+if (is.null(title)) {
+title = paste0("WDI Indicator ", code, " for year ",
+year)
+}
+data = WDI(country = country.regions$iso2c, code, start = 2015,
+end = 2015)
+data = merge(data, country.regions)
+data$value = data[, names(data) == code]
+country_choropleth(data, title, "", num_colors, zoom)
+data = WDI(country = country.regions$iso2c, code, start = 2015,
+end = 2015)
+data(country.regions, package = "choroplethrMaps", envir = environment())
+if (is.null(title)) {
+title = paste0("WDI Indicator ", code, " for year ",
+year)
+}
+data = WDI(country = country.regions$iso2c, "SP.POP.TOTL", start = 2015,
+end = 2015)
+data = merge(data, country.regions)
+data$value = data[, names(data) == code]
+country_choropleth(data, title, "", num_colors, zoom)
+data(country.regions, package = "choroplethrMaps", envir = environment())
+if (is.null(title)) {
+title = paste0("WDI Indicator ", code, " for year ",
+year)
+}
+data = WDI(country = country.regions$iso2c, "SP.POP.TOTL", start = 2015,
+end = 2015)
+?WDI
+WDI(country="all", indicator=c("AG.AGR.TRAC.NO","TM.TAX.TCOM.BC.ZS"),
+start=1990, end=2000)
+update.packages()
+detach("package:WDI", unload = TRUE)
+library(WDI)
+library(choroplethr)
+library(choroplethrMaps)
+data = WDI(country = country.regions$iso2c, "SP.POP.TOTL", start = 2015,
+end = 2015)
+?choroplethr_wdi
+choroplethr_wdi(code="SP.POP.TOTL", year=2012, title="2012 Population Estimates", num_colors=1)
+data("df_county_demographics")
+colnames(df_county_demographics)
+?df_county_demographics
+x = "total_population"
+df_county_demographics$value = df_county_demographics[[ x ]]
+head(df_county_demographics
+)
+?county_choropleth
+?df_pop_county
+tidyverse_packages
+library(tidyverse)
+tidyverse_packages()
+?county_choropleth
+install.packages("rticles")
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+plot(cars)
+library(choroplethr)
+data(df_county_demographics)
+head(df_county_demographics)
+library(tidyverse)
+df_county_demographics %>%
+sort(per_capita_income) %>%
+head()
+?sort
+df_county_demographics %>%
+arrange(per_capita_income) %>%
+head()
+?arrange
+df_county_demographics %>%
+arrange(desc(per_capita_income)) %>%
+head()
+?get_county_demographics
+x=get_county_demographics(2018,1)
+api.key.install("f8b2a6df01479981aef39577b3c4466f5a4c8274")
+x=get_county_demographics(2018,1)
+acs.tables.install()
+x=get_county_demographics(2018,1)
+df_county_demographics %>%
+arrange(desc(per_capita_income)) %>%
+head()
+summary(x$per_capita_income)
+x %>%
+arrange(desc(per_capita_income)) %>%
+head()
+nrow(x)
+x=get_county_demographics(2018,5)
+library(tidyverse)
+x %>%
+arrange(desc(per_capita_income)) %>%
+head()
+summary(x$per_capita_income)
+nrow(x)
+choroplethr_acs
+county_choropleth_acs
+?get_acs_data
+# industry
+y = get_acs_data("B24011", "county", 2018,5)
+y
+class(y)
+summary(y$df$value)
+head(x)
+x %>%
+arrange(desc(percent_white)) %>%
+head(10)
+df_county_demographics %>% head()
+?df_county_demographics
+library(choroplethrMaps)
+data(county.names)
+data(county.regions)
+head(county.regions)
+x %>%
+arrange(desc(percent_white)) %>%
+join(county.regions) %>%
+select(county.name, county.state, percent_white) %>%
+head(10)
+x %>%
+arrange(desc(percent_white)) %>%
+left_join(county.regions) %>%
+select(county.name, county.state, percent_white) %>%
+head(10)
+x %>%
+arrange(desc(percent_white)) %>%
+left_join(county.regions) %>%
+select(county.name, state.name, percent_white) %>%
+head(10)
+x$value = x$per_capita_income
+county_choropleth(x, title="2018 Per Capita Income")
+county_choropleth(x, title="US County Per Capita Income (2018)", num_colors=1)
+county_choropleth(x, title="US County Per Capita Income (2018)", num_colors=4)
+county_choropleth(x, title="US County Per Capita Income (2018)", num_colors=9)
+county_choropleth(x, title="US County Per Capita Income (2018)")
+county_choropleth(x, title="US County Income (2018)", legend="Dollars")
+county_choropleth(x, title="US County Per Capita Income (2018)", legend="Dollars")
+boxplot(x$value)
+boxplot(x$value, title="2018 Per Capita Income by County")
+?boxplot
+boxplot(x$value, main="2018 Per Capita Income by County", ylab="Dollars")
+getwd()
+?print
+library(ggplot2)
+stargazer::stargazer(head(mpg), type="html", title="Table with stargazer")
+?kable
+rmarkdown::html_document()
+``
+install.packages(c("choroplethr", "choroplethrMaps"))
+install.packages("flexdashboard")
+devtools::install_github("distill")
+library(devtools)
+devtools::install_github("distill")
+devtools::install_github("distill")
+install.packages("distill")

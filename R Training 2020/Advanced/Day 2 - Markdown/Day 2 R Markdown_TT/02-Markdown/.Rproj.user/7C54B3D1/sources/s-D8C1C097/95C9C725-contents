@@ -1,0 +1,36 @@
+---
+title: "Untitled"
+author: "Ari Lamstein"
+date: "7/10/2020"
+params:
+  state: california
+  title: A map of California!
+---
+
+# Demographic Explorer
+
+This is a simple demographic explorer. Up above, in the `YAML` section of the document, you set a `state` variable. The code below creates a choropleth (i.e. color-coded) map that shows county-level population estimates for that state in 2013.
+
+Note: the YAML portion of the document is not rendered when you click "Knit".
+
+```{r echo = FALSE, message = FALSE}
+library(choroplethr)
+library(choroplethrMaps)
+library(stringr)
+
+title = paste("2012 County-Level Population Estimates:", str_to_title(params$state))
+
+data(df_pop_county)
+county_choropleth(df_pop_county, 
+                  title      = params$title, 
+                  legend     = "Population", 
+                  state_zoom = params$state)
+```
+
+
+
+
+
+
+
+

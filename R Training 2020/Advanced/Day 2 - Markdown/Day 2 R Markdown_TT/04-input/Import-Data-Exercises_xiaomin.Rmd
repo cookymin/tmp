@@ -1,0 +1,101 @@
+---
+title: "Import Data"
+output: html_notebook
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## Your Turn 1
+
+Find nimbus.csv on your server or computer. Then set that directory to be your working directory.
+
+Read nimbus.csv into an object using `read_csv`. Then view the results.
+
+`read_csv` is from the `readr` package. readr is loaded each time you load the Tidyverse.
+
+```{r}
+dat <- read_csv("nimbus.csv", na = ".")
+View( dat )
+```
+
+## Parsing NA's
+
+Re-read in the nimbus.csv file. This time use the `na` parameter so that all periods (".") are read in as NA values.
+
+You can set `na` to a single character string or a vector of character strings. `read_csv()` will transform every value listed in the `na` argument to an `NA` when it reads in the data.
+
+Then use `summarize` to count the number of NA in the ozone column.
+```{r}
+dat <- read_csv("nimbus.csv", na = ".") 
+sum(is.na(dat$ozone))
+
+```
+
+
+## Parsing data types
+
+By default, read_csv uses the function col_guess to read guess the type of each datatype.
+
+In this case, col_guess worked. But for the sake of practice, use the parameter `col_types` to force the ozone column to be read in as a double.
+
+
+```{r}
+nimbus <- read_csv("nimbus.csv", col_guess("ozone"))
+
+nimbus <- read_csv("nimbus.csv", na = ".",
+                   col_types = list(ozone = col_double()), col_guess())
+
+```
+
+To complete the code, set `ozone` equal to one of the functions below, each function instructs `read_csv()` to parse `ozone` as a specific type of data.
+
+Type function     | Data Type
+----------------- | -----------------------------------------
+`col_character()` | character
+`col_date()`      | Date
+`col_datetime()`  | POSIXct (date-time)
+`col_double()`    | double (numeric)
+`col_factor()`    | factor
+`col_guess()`     | let readr geuss (default)
+`col_integer()`   | integer
+`col_logical()`   | logical
+`col_number()`    | numbers mixed with non-number characters
+`col_numeric()`   | double or integer
+`col_skip()`      | do not read this column
+`col_time()`      | time
+
+## The hole in the ozone layer
+
+Now that we have our data, we can use it to plot a picture of the hole in the ozone layer. Note that the "hole" in the ozone layer is the dark regions around the south pole. The actual "hole" in the data is a smaller area centered on the south pole, where the satellite did not take measurements.
+
+```{r}
+nimbus <- read_csv("nimbus.csv", na = ".", 
+  col_types = list(ozone = col_double()))
+
+library(viridis)
+world <- map_data(map = "world")
+nimbus %>% 
+  ggplot() +
+    geom_point(aes(longitude, latitude, color = ozone)) +
+    geom_path(aes(long, lat, group = group), data = world) +
+    coord_map("ortho", orientation=c(-90, 0, 0)) +
+    scale_color_viridis(option = "A")
+```
+
+## readxl
+
+Use the read_excel file from the readxl package to read in the file "who.xls".
+
+Use the "range" parameter to read in the second, smaller table.
+
+Set NA values appropriately.
+
+By default, read_excel might treat the first row of the table as column names.
+Read the help for ?read_excel to find a way to fix that.
+
+```{r}
+library(readxl)
+read_excel("who.xls", na = c("x", ""), range = "C204:U209", col_names = FALSE)
+```

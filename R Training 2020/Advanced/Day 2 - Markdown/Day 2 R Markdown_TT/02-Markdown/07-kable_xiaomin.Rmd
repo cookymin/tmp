@@ -1,0 +1,33 @@
+---
+title: "kable demo"
+author: "Ari Lamstein"
+date: "11/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+Experiment with rendering `head(mpg)` several ways.
+
+1. As-is
+2. As the output of `?knitr::kable`
+3. As the output of `?knitr::kable` piped to `?kableExtra::kable_styling`
+
+NOTE: Only load the kableExtra package while doing exercise #3. There seems to be a bug where when the kableExtra
+package is loaded, it leads the regular kable package to return poorly styled output.
+
+Then experiment with various options. In particular, with your partner, cycle 
+through all options of the parameter `boostrap_options` in the `kable_styling` function.
+
+If you have extra time, replace your called of `kable_styling` with another function in the `kableExtra` package
+(such as `kable_minimal` or `kable_classic`). See this page for additional ideas: https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+
+```{r}
+# NOTE: Make sure you have all these packages installed!
+library(knitr)
+library(kableExtra)
+
+head(mpg) %>% kable() %>% kable_styling( bootstrap_options = "hover")
+```

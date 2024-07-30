@@ -1,0 +1,46 @@
+---
+# change the title
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(knitr)
+# load the tidyverse
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Raw Dataframe
+
+```{r}
+# show the raw mpg dataset, as a dataframe
+kable(head(mpg)) 
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Boxplot
+
+```{r}
+# ggplot class by hwy - use a boxplot
+ggplot( data = mpg ) +
+  geom_boxplot(aes(y = hwy, group = class))
+```
+
+### Scatterplot
+
+```{r}
+# ggplot displ by hwy - use a scatterplot
+ggplot( data = mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+
+```
+

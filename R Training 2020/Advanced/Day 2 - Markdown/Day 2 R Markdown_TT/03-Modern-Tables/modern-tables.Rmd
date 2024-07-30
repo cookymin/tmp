@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(gt)
+
+# first 10 unique model of car
+mpg = mpg[!duplicated(mpg$model), ][1:10,]
+```
+
+# Your Turn 1
+
+Visualize the mpg dataset 3 times:
+1. First as just the normal mpg.
+2. Then by piping it into the gt() function
+3. Then by piping it into the gt() function, but setting the `rowname_col` parameter to `model`.
+
+Note that plots now appear in the "Viewer" tab, not the "Plots" tab
+```{r}
+mpg
+```
+
+# Your Turn 2
+
+Copy the gt table from the previous exercise
+Add a title and subtitle with `tab_header`.
+Add a footer with `tab_source_note`.
+Extra credit: use `md` at least once to use markdown
+
+```{r}
+
+```
+
+# Your Turn 3
+
+Use `tab_row_group` to add two groups to mpg: 
+* A group called "Older Cars" that has cars from 1999
+* A group called "Newer Cars" that has cars from 2008
+```{r}
+
+```
+
+# Your Turn 4
+
+Use the `tbl_summary` function in the `gtsummary` package to create a summary 
+table of the data below.
+
+Then set the `by` parameter to `trt`.
+
+Read the help (`?tbl_summary`) to familiarize yourself with other options.
+```{r}
+library(gtsummary)
+
+# view this variable, and then create a summary table of it
+trial2 = trial %>% select(trt, age, grade, response)
+
+```
